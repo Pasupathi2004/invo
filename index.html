@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inventory Checker AI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Login Page -->
+  <div id="loginPage" class="section">
+    <h3>Login</h3>
+    <input id="username" placeholder="Username" type="text" />
+    <input id="password" placeholder="Password" type="password" />
+    <button onclick="login()">Login</button>
+    <p id="loginMessage" style="color:red;"></p>
+  </div>
+
+  <!-- Main App Page (Hidden Initially) -->
+  <div id="appPage" class="hidden">
+    <header>
+      <span>Inventory Checker</span>
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+    </header>
+
+    <div id="overlay" onclick="toggleMenu()"></div>
+
+    <div id="sideMenu" class="side-menu">
+      <button onclick="openAdd()">➕ Add Item</button>
+      <button onclick="openUpdate()">✏️ Update Item</button>
+      <button onclick="openDelete()">🗑️ Delete Item</button>
+      <button onclick="showSpares()">📦 Spares List</button>
+      <button onclick="downloadCSV()">⬇️ Download CSV</button>
+      <button onclick="toggleMenu()">❌ Close</button>
+    </div>
+
+    <main id="main" class="section">
+      <input id="searchInput" placeholder="Search item..." oninput="showSuggestions()" />
+      <div id="suggestBox" class="suggestions"></div>
+      <button onclick="startListening()">🎤 Voice Search</button>
+      <div id="searchResult" class="result"></div>
+      <div id="resultMessage" class="message"></div>
+    </main>
+
+    <section id="addSection" class="section hidden">
+      <button class="back-button" onclick="goBack()">🔙 Back</button>
+      <h3>Add Item</h3>
+      <input id="newItem" placeholder="Item Name" />
+      <input id="newRack" placeholder="Rack Name" />
+      <input id="newBin" placeholder="Bin Name" />
+      <input id="newQty" type="number" placeholder="Quantity" />
+      <button onclick="addItem()">Add</button>
+    </section>
+
+    <section id="updateSection" class="section hidden">
+      <button class="back-button" onclick="goBack()">🔙 Back</button>
+      <h3>Update Item</h3>
+      <input id="updateItem" placeholder="Item to Update" />
+      <input id="updateQty" type="number" placeholder="New Quantity" />
+      <button onclick="updateItem()">Update</button>
+    </section>
+
+    <section id="deleteSection" class="section hidden">
+      <button class="back-button" onclick="goBack()">🔙 Back</button>
+      <h3>Delete Item</h3>
+      <input id="deleteItem" placeholder="Item to Delete" />
+      <button onclick="deleteItem()">Delete</button>
+    </section>
+
+    <section id="sparesSection" class="section hidden">
+      <button class="back-button" onclick="goBack()">🔙 Back</button>
+      <h3>Spares List</h3>
+      <div id="sparesList"></div>
+    </section>
+
+    <script src="script.js"></script>
+  </div>
+
+</body>
+</html>
